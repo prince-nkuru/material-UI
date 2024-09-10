@@ -6,7 +6,8 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import { useState } from "react";
 
 const MuiButton = () => {
-  const [formats, setFormats] = useState< null | string[]>(null)
+  const [formats, setFormats] = useState< null | string[]>(null);
+  const [sub, setSub] = useState('subscribe')
   const handleFormatChange = (_event:React.MouseEvent<HTMLElement>, updatedFormats: null|string[]) => {
       setFormats(updatedFormats)
   }
@@ -15,11 +16,11 @@ const MuiButton = () => {
     <Stack spacing={2} direction={'row'}>
       <Button variant="text" href="http://google.com">text</Button>
       <Button variant="contained">contained</Button>
-      <Button variant="outlined">outlined</Button>
+      <Button variant="outlined">outlined</Button> 
     </Stack>
 
     <Stack spacing={2} direction={'row'}>
-      <Button variant="contained" color="primary">primary</Button>
+      <Button variant= {sub === 'subscribe'?"outlined" : 'contained'} color= { sub === 'subscribe'?"error" : 'primary'} onClick={() => setSub( sub === 'subscribe'?'subscribed': 'subscribe')}>{sub}</Button>
       <Button variant="text" color="secondary">secondary</Button>
       <Button variant="contained" color="error">error</Button>
       <Button variant="outlined" color="warning">warning</Button>
